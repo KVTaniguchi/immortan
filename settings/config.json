@@ -1,0 +1,14 @@
+{
+  "type": "town-settings",
+  "version": 1,
+  "default_agent": "llama4",
+  "agents": {
+    "llama4": {
+      "command": "ollama",
+      "args": [
+        "run",
+        "llama4"
+      ]
+    }
+  }
+}

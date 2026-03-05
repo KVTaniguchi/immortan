@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rigs": {
+    "todosampler": {
+      "git_url": "",
+      "added_at": "2026-03-05T15:58:30.366279-05:00",
+      "beads": {
+        "repo": "",
+        "prefix": "to"
+      }
+    }
+  }
+}

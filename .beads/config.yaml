@@ -1,0 +1,5 @@
+prefix: hq
+issue-prefix: hq
+sync.mode: dolt-native
+
+routing.mode: "explicit"

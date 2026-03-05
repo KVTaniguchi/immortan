@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		058ACD5E6D42E2BBF9DE6238 /* GastownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1DBCDB7D1D8394739FEF7 /* GastownService.swift */; };
+		3032BDEE930A322786C5D486 /* QuickChatSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBD5C8099E8EC4F6317C4E /* QuickChatSheet.swift */; };
+		340FF4FAB24B630F4456A60A /* NativeCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE382B1B1554CF8942D2244 /* NativeCommandRunner.swift */; };
+		3EED59230AD70080B0AE7F62 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9E7ABB8ED7D5FA9C687CE /* CommandRunner.swift */; };
+		4F44F5C4C0E9C21AB46F5959 /* GastownServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7501794496ABBBF6232449 /* GastownServiceTests.swift */; };
+		6239FB84A67A21D8694C810F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D102D49D9BEE7BE3EB87561 /* ContentView.swift */; };
+		8CF4F61C62551A27EC15AD73 /* MockCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D76C0C434A0F6209660C7B /* MockCommandRunner.swift */; };
+		90E5A44FFB31BF57F261804D /* GastownModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0B5A7896E100F324A3272 /* GastownModels.swift */; };
+		91B970DE332A1CF679004495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C914D78FDE93B668573EFFA /* Assets.xcassets */; };
+		BBA9D6CD4976F68956F6FE54 /* GastownControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC35A1C845DA2B46CFAF032 /* GastownControllerApp.swift */; };
+		C37DB41938044A3AE31CED36 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55929BD912A871E7F6A4DCE /* DashboardView.swift */; };
+		E6370C132372A6EADDC9A216 /* AddRigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FB8AF064738E3B2698F879 /* AddRigView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		842819146EB992538F4A6A7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39221372FD19FA7ED62B5EDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EDAE8B1BC8D97A99F7B6412;
+			remoteInfo = GastownController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		119C7CB624874C1B4E26A629 /* GastownControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GastownControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F0B5A7896E100F324A3272 /* GastownModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownModels.swift; sourceTree = "<group>"; };
+		20C1DBCDB7D1D8394739FEF7 /* GastownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownService.swift; sourceTree = "<group>"; };
+		2CC35A1C845DA2B46CFAF032 /* GastownControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownControllerApp.swift; sourceTree = "<group>"; };
+		3C914D78FDE93B668573EFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5DAC0491052FA839F223D475 /* GastownController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GastownController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D102D49D9BEE7BE3EB87561 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9DD9E7ABB8ED7D5FA9C687CE /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
+		A9FB8AF064738E3B2698F879 /* AddRigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRigView.swift; sourceTree = "<group>"; };
+		B7BBD5C8099E8EC4F6317C4E /* QuickChatSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickChatSheet.swift; sourceTree = "<group>"; };
+		E84C6F93280D71659D200558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EA7501794496ABBBF6232449 /* GastownServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownServiceTests.swift; sourceTree = "<group>"; };
+		EBE382B1B1554CF8942D2244 /* NativeCommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCommandRunner.swift; sourceTree = "<group>"; };
+		F0D76C0C434A0F6209660C7B /* MockCommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommandRunner.swift; sourceTree = "<group>"; };
+		F55929BD912A871E7F6A4DCE /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00442D5A8067B7536D60BEB2 /* GastownControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA7501794496ABBBF6232449 /* GastownServiceTests.swift */,
+				F0D76C0C434A0F6209660C7B /* MockCommandRunner.swift */,
+			);
+			path = GastownControllerTests;
+			sourceTree = "<group>";
+		};
+		1FBC388CCD826EA0D25083E7 /* GastownController */ = {
+			isa = PBXGroup;
+			children = (
+				A9FB8AF064738E3B2698F879 /* AddRigView.swift */,
+				3C914D78FDE93B668573EFFA /* Assets.xcassets */,
+				9DD9E7ABB8ED7D5FA9C687CE /* CommandRunner.swift */,
+				6D102D49D9BEE7BE3EB87561 /* ContentView.swift */,
+				F55929BD912A871E7F6A4DCE /* DashboardView.swift */,
+				2CC35A1C845DA2B46CFAF032 /* GastownControllerApp.swift */,
+				19F0B5A7896E100F324A3272 /* GastownModels.swift */,
+				20C1DBCDB7D1D8394739FEF7 /* GastownService.swift */,
+				E84C6F93280D71659D200558 /* Info.plist */,
+				EBE382B1B1554CF8942D2244 /* NativeCommandRunner.swift */,
+				B7BBD5C8099E8EC4F6317C4E /* QuickChatSheet.swift */,
+			);
+			path = GastownController;
+			sourceTree = "<group>";
+		};
+		571A3ACCBA9987BD8321F33F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DAC0491052FA839F223D475 /* GastownController.app */,
+				119C7CB624874C1B4E26A629 /* GastownControllerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B06B0AB564A67E74894F46C1 = {
+			isa = PBXGroup;
+			children = (
+				1FBC388CCD826EA0D25083E7 /* GastownController */,
+				00442D5A8067B7536D60BEB2 /* GastownControllerTests */,
+				571A3ACCBA9987BD8321F33F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7EDAE8B1BC8D97A99F7B6412 /* GastownController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88E8E81FEFAC99F577111EC8 /* Build configuration list for PBXNativeTarget "GastownController" */;
+			buildPhases = (
+				CE61C2535681AEE7181D2DD1 /* Sources */,
+				42A5C047E9A1B860B710BBCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GastownController;
+			packageProductDependencies = (
+			);
+			productName = GastownController;
+			productReference = 5DAC0491052FA839F223D475 /* GastownController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C4A0177F66652144226FD44C /* GastownControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56624B2388F253C2CEE7D514 /* Build configuration list for PBXNativeTarget "GastownControllerTests" */;
+			buildPhases = (
+				4C274399647A588040390334 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E033750F4F0BCC68AF34E0F /* PBXTargetDependency */,
+			);
+			name = GastownControllerTests;
+			packageProductDependencies = (
+			);
+			productName = GastownControllerTests;
+			productReference = 119C7CB624874C1B4E26A629 /* GastownControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39221372FD19FA7ED62B5EDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					7EDAE8B1BC8D97A99F7B6412 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					C4A0177F66652144226FD44C = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 16310B0EC30A199B076A2639 /* Build configuration list for PBXProject "GastownController" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = B06B0AB564A67E74894F46C1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 571A3ACCBA9987BD8321F33F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7EDAE8B1BC8D97A99F7B6412 /* GastownController */,
+				C4A0177F66652144226FD44C /* GastownControllerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42A5C047E9A1B860B710BBCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91B970DE332A1CF679004495 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C274399647A588040390334 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F44F5C4C0E9C21AB46F5959 /* GastownServiceTests.swift in Sources */,
+				8CF4F61C62551A27EC15AD73 /* MockCommandRunner.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE61C2535681AEE7181D2DD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6370C132372A6EADDC9A216 /* AddRigView.swift in Sources */,
+				3EED59230AD70080B0AE7F62 /* CommandRunner.swift in Sources */,
+				6239FB84A67A21D8694C810F /* ContentView.swift in Sources */,
+				C37DB41938044A3AE31CED36 /* DashboardView.swift in Sources */,
+				BBA9D6CD4976F68956F6FE54 /* GastownControllerApp.swift in Sources */,
+				90E5A44FFB31BF57F261804D /* GastownModels.swift in Sources */,
+				058ACD5E6D42E2BBF9DE6238 /* GastownService.swift in Sources */,
+				340FF4FAB24B630F4456A60A /* NativeCommandRunner.swift in Sources */,
+				3032BDEE930A322786C5D486 /* QuickChatSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2E033750F4F0BCC68AF34E0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7EDAE8B1BC8D97A99F7B6412 /* GastownController */;
+			targetProxy = 842819146EB992538F4A6A7D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0328BC86B9FE6F5082A69F91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = GastownController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevintaniguchi.GastownController;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		34FD200D33254090C453502F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3B7AFFD5F7D9DAE937A25302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3EF936FABB0C6330E355932D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevintaniguchi.GastownControllerTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GastownController.app/Contents/MacOS/GastownController";
+			};
+			name = Debug;
+		};
+		7054BA5583972FAE5093EB1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevintaniguchi.GastownControllerTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GastownController.app/Contents/MacOS/GastownController";
+			};
+			name = Release;
+		};
+		F305101120EE361485FE4A90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = GastownController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevintaniguchi.GastownController;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16310B0EC30A199B076A2639 /* Build configuration list for PBXProject "GastownController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B7AFFD5F7D9DAE937A25302 /* Debug */,
+				34FD200D33254090C453502F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		56624B2388F253C2CEE7D514 /* Build configuration list for PBXNativeTarget "GastownControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EF936FABB0C6330E355932D /* Debug */,
+				7054BA5583972FAE5093EB1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		88E8E81FEFAC99F577111EC8 /* Build configuration list for PBXNativeTarget "GastownController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0328BC86B9FE6F5082A69F91 /* Debug */,
+				F305101120EE361485FE4A90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 39221372FD19FA7ED62B5EDE /* Project object */;
+}
