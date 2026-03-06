@@ -1,14 +1,40 @@
 {
   "type": "town-settings",
   "version": 1,
-  "default_agent": "llama4",
+  "default_agent": "mayor",
   "agents": {
+    "llama-fast": {
+      "command": "ollama",
+      "args": [
+        "run",
+        "llama3.1:70b-instruct-q4_K_M"
+      ]
+    },
     "llama4": {
       "command": "ollama",
       "args": [
         "run",
         "llama4"
       ]
+    },
+    "mayor": {
+      "command": "ollama",
+      "args": [
+        "run",
+        "qwen2.5-coder:32b"
+      ]
+    },
+    "polecat": {
+      "command": "ollama",
+      "args": [
+        "run",
+        "glm4:9b"
+      ]
     }
+  },
+  "scheduler": {
+    "max_polecats": 1,
+    "batch_size": 1,
+    "spawn_delay": "0s"
   }
 }
