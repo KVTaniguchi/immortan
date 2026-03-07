@@ -1,6 +1,10 @@
-# Immortan
+# Immortan: Gastown Project for AI Agent Teams
 
 Immortan is a macOS control app for a Gas Town workspace. It gives you a PM-friendly dashboard to run and monitor agent rigs without living in tmux.
+
+## What This Is
+
+Immortan is a **Gastown project** focused on operating **AI agent teams**. It provides a product-friendly interface for **multi-agent orchestration** across mayor, witness, and polecat workflows.
 
 ## What It Does
 
@@ -16,6 +20,17 @@ Immortan is a macOS control app for a Gas Town workspace. It gives you a PM-frie
 - `GastownControllerTests/`: unit tests for service logic
 - `settings/`: Gas Town agent/model configuration
 - `mayor/`, `daemon/`, `witness/`, `polecats/`: runtime workspace state
+
+## Architecture: AI Agent Team Roles
+
+Immortan coordinates a Gas Town-style AI agent team:
+
+- `mayor`: PM-facing direction, priorities, and decisions
+- `witness`: project observation and state tracking
+- `polecats`: specialized execution workers
+- `deacon`/runtime services: routing, startup checks, and automation plumbing
+
+This role model keeps human operators focused on outcomes while agent teams handle execution details.
 
 ## Requirements
 
@@ -44,3 +59,7 @@ Immortan is a macOS control app for a Gas Town workspace. It gives you a PM-frie
 - Imported/external projects do not need to live inside this repository.
 - The controller only displays rigs currently registered in this Gas Town workspace.
 - Runtime folders and logs in this repo are environment state, not app source.
+
+## Keywords
+
+Gastown project, AI agent teams, multi-agent orchestration, agent collaboration, agent ops, mayor witness polecat, macOS AI tooling, LLM workflow control plane.
