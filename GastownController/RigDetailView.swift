@@ -6,6 +6,16 @@ struct RigDetailView: View {
     
     @State private var chatTarget: AgentStatus?
     
+    private var currentMilestone: NarrativeState {
+        guard let town = service.townStatus else { return .unknown }
+        let states = town.agents.map { $0.narrativeState }
+        if states.contains(.jammed) { return .jammed }
+        if states.contains(.forging) { return .forging }
+        if states.contains(.planning) { return .planning }
+        if states.contains(.asleep) { return .asleep }
+        return .unknown
+    }
+    
     // Industrial theme colors
     let warRigBackground = Color(red: 0.1, green: 0.1, blue: 0.12)
     let neonGreen = Color(red: 0.2, green: 0.9, blue: 0.4)
@@ -17,9 +27,9 @@ struct RigDetailView: View {
             warRigBackground.ignoresSafeArea()
             
             if let town = service.townStatus {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
-                        
+                VStack(spacing: 0) {
+                    // FIXED TOP: Admin Panel
+                    VStack(alignment: .leading, spacing: 20) {
                         // Header
                         HStack {
                             VStack(alignment: .leading) {
@@ -36,29 +46,28 @@ struct RigDetailView: View {
                         
                         Divider().background(steelGray)
                         
-                        // MIDDLE: The Pipeline / Assembly Line
+                        // Pipeline
                         Text("PRODUCTION PIPELINE")
-                            .font(.system(size: 16, weight: .bold, design: .monospaced))
+                            .font(.system(size: 14, weight: .bold, design: .monospaced))
                             .foregroundColor(.gray)
                         
-                        // Progress Bar (Total Active Hooks vs completed generic ratio just as visual flair)
+                        // Progress Bar
                         VStack(spacing: 4) {
                             HStack {
-                                Text("MILITARY TARGET")
+                                Text("CURRENT MILESTONE")
                                     .font(.caption2)
                                     .foregroundColor(neonGreen)
                                 Spacer()
-                                Text("\(town.summary.activeHooks) ACTIVE BATTLES")
+                                Text(currentMilestone.rawValue.uppercased())
                                     .font(.caption2)
+                                    .foregroundColor(currentMilestone == .jammed ? .red : (currentMilestone == .forging ? neonOrange : neonGreen))
                             }
-                            ProgressView(value: 0.6) // Fake milestone percent for now natively
-                                .progressViewStyle(LinearProgressViewStyle(tint: neonOrange))
+                            ProgressView(value: currentMilestone == .forging ? 0.6 : (currentMilestone == .jammed ? 0.3 : (currentMilestone == .planning ? 0.1 : 1.0)))
+                                .progressViewStyle(LinearProgressViewStyle(tint: currentMilestone == .jammed ? .red : neonOrange))
                         }
-                        .padding(.vertical, 8)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
-                                // 1. Mayor (Coordinator)
                                 if let mayor = town.agents.first(where: { $0.role == "coordinator" }) {
                                     AssemblyStation(agent: mayor, title: "HQ / MAYOR", accent: neonOrange) {
                                         chatTarget = mayor
@@ -68,7 +77,6 @@ struct RigDetailView: View {
                                 Image(systemName: "chevron.right.2")
                                     .foregroundColor(steelGray)
                                 
-                                // 2. Polecats (Workers)
                                 VStack(spacing: 8) {
                                     Text("POLECATS (WORKERS)")
                                         .font(.caption2)
@@ -85,7 +93,6 @@ struct RigDetailView: View {
                                 Image(systemName: "chevron.right.2")
                                     .foregroundColor(steelGray)
                                 
-                                // 3. Witness & Deacon (Health Checkers)
                                 VStack(spacing: 8) {
                                     Text("QA & RELIABILITY")
                                         .font(.caption2)
@@ -100,49 +107,24 @@ struct RigDetailView: View {
                                 }
                             }
                         }
-                        
-                        Divider().background(steelGray).padding(.vertical, 8)
-                        
-                        // BOTTOM: The Narrative Feed
-                        Text("NARRATIVE FEED & ALERTS")
-                            .font(.system(size: 16, weight: .bold, design: .monospaced))
-                            .foregroundColor(.gray)
-                        
-                        VStack(alignment: .leading, spacing: 12) {
-                            if let events = town.events, !events.isEmpty {
-                                ForEach(events) { event in
-                                    HStack {
-                                        Text(">")
-                                            .foregroundColor(neonOrange)
-                                            .font(.system(.body, design: .monospaced))
-                                        Text(event.narrativeText)
-                                            .foregroundColor(.white)
-                                            .font(.system(.body, design: .monospaced))
-                                    }
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(steelGray.opacity(0.3))
-                                    .border(steelGray, width: 1)
-                                }
-                            } else {
-                                // Fallback simulated narrative
-                                HStack {
-                                    Text(">")
-                                        .foregroundColor(neonGreen)
-                                        .font(.system(.body, design: .monospaced))
-                                    Text("The Town is quiet. Awaiting Overseer directives.")
-                                        .foregroundColor(.gray)
-                                        .font(.system(.body, design: .monospaced))
-                                }
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(steelGray.opacity(0.3))
-                                .border(steelGray, width: 1)
-                            }
-                        }
-                        
                     }
                     .padding(32)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(warRigBackground)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(steelGray.opacity(0.85), lineWidth: 1)
+                            )
+                            .shadow(color: .black.opacity(0.35), radius: 8, x: 0, y: 4)
+                    )
+                    .padding(.horizontal, 12)
+                    .padding(.top, 12)
+                    
+                    Divider().background(steelGray)
+                    
+                    // SCROLLABLE CONTENT: Narrative & Chat
+                    MayorChatView(service: service, rigName: rig.name)
                 }
             } else {
                 VStack(spacing: 20) {
@@ -156,6 +138,9 @@ struct RigDetailView: View {
         }
         .sheet(item: $chatTarget) { agent in
             QuickChatSheet(service: service, targetAgent: agent)
+        }
+        .safeAreaInset(edge: .top) {
+            Color.clear.frame(height: 14)
         }
         .navigationTitle(rig.name.uppercased())
     }
