@@ -1,0 +1,149 @@
+{
+  "" : {
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownController-primary.dia",
+    "emit-module-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownController-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownController-primary-emit-module.dia",
+    "pch" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownController-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownController-primary.swiftdeps"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/AddRigView.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/AddRigView~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/CommandCenterView.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandCenterView~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/CommandRunner.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/CommandRunner~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/ContentView.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/DashboardView.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/DashboardView~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/GastownControllerApp.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownControllerApp~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/GastownModels.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownModels~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/GastownService.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GastownService~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/NativeCommandRunner.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/NativeCommandRunner~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/QuickChatSheet.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/QuickChatSheet~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/RigDetailView.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/RigDetailView~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/SetupCheckService.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupCheckService~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/GastownController/SetupView.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/SetupView~partial.swiftmodule"
+  },
+  "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/ktaniguchi/Development/immortan/build/Build/Intermediates.noindex/GastownController.build/Debug/GastownController.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

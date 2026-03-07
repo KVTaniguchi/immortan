@@ -1,10 +1,11 @@
 {
   "running": true,
-  "pid": 30649,
-  "port": 3308,
-  "started_at": "2026-03-05T16:41:48.370544-05:00",
+  "pid": 92156,
+  "port": 3307,
+  "started_at": "2026-03-06T09:48:36.21527-05:00",
   "data_dir": "/Users/ktaniguchi/Development/immortan/.dolt-data",
   "databases": [
+    "beads",
     "hq"
   ]
 }

@@ -10,15 +10,20 @@
 		058ACD5E6D42E2BBF9DE6238 /* GastownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1DBCDB7D1D8394739FEF7 /* GastownService.swift */; };
 		3032BDEE930A322786C5D486 /* QuickChatSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBD5C8099E8EC4F6317C4E /* QuickChatSheet.swift */; };
 		340FF4FAB24B630F4456A60A /* NativeCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE382B1B1554CF8942D2244 /* NativeCommandRunner.swift */; };
+		353E9774D3A3558D37FE8832 /* RigDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B01E87B5B0D4B29137E72 /* RigDetailView.swift */; };
 		3EED59230AD70080B0AE7F62 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9E7ABB8ED7D5FA9C687CE /* CommandRunner.swift */; };
 		4F44F5C4C0E9C21AB46F5959 /* GastownServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7501794496ABBBF6232449 /* GastownServiceTests.swift */; };
+		4FC94FAB98F2F924CF9F845C /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4607D775D1D370AA36D3C /* SetupView.swift */; };
 		6239FB84A67A21D8694C810F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D102D49D9BEE7BE3EB87561 /* ContentView.swift */; };
 		8CF4F61C62551A27EC15AD73 /* MockCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D76C0C434A0F6209660C7B /* MockCommandRunner.swift */; };
 		90E5A44FFB31BF57F261804D /* GastownModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0B5A7896E100F324A3272 /* GastownModels.swift */; };
 		91B970DE332A1CF679004495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C914D78FDE93B668573EFFA /* Assets.xcassets */; };
 		BBA9D6CD4976F68956F6FE54 /* GastownControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC35A1C845DA2B46CFAF032 /* GastownControllerApp.swift */; };
+		BF890729CB43E6CDA1DB5BF2 /* MayorChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360BE4D4120F7E1E692E83DF /* MayorChatView.swift */; };
 		C37DB41938044A3AE31CED36 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55929BD912A871E7F6A4DCE /* DashboardView.swift */; };
+		D661BC73E778EE606B450F79 /* CommandCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4158B8C5D12A711AC4BC4E4D /* CommandCenterView.swift */; };
 		E6370C132372A6EADDC9A216 /* AddRigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FB8AF064738E3B2698F879 /* AddRigView.swift */; };
+		EF7EC5D20FD383070894C657 /* SetupCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC4F2F66E105EB3B3859D9D /* SetupCheckService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +41,19 @@
 		19F0B5A7896E100F324A3272 /* GastownModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownModels.swift; sourceTree = "<group>"; };
 		20C1DBCDB7D1D8394739FEF7 /* GastownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownService.swift; sourceTree = "<group>"; };
 		2CC35A1C845DA2B46CFAF032 /* GastownControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownControllerApp.swift; sourceTree = "<group>"; };
+		360BE4D4120F7E1E692E83DF /* MayorChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MayorChatView.swift; sourceTree = "<group>"; };
 		3C914D78FDE93B668573EFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4158B8C5D12A711AC4BC4E4D /* CommandCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCenterView.swift; sourceTree = "<group>"; };
 		5DAC0491052FA839F223D475 /* GastownController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GastownController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		674B01E87B5B0D4B29137E72 /* RigDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RigDetailView.swift; sourceTree = "<group>"; };
 		6D102D49D9BEE7BE3EB87561 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7BC4F2F66E105EB3B3859D9D /* SetupCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCheckService.swift; sourceTree = "<group>"; };
 		9DD9E7ABB8ED7D5FA9C687CE /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		A9FB8AF064738E3B2698F879 /* AddRigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRigView.swift; sourceTree = "<group>"; };
 		B7BBD5C8099E8EC4F6317C4E /* QuickChatSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickChatSheet.swift; sourceTree = "<group>"; };
+		C8E4607D775D1D370AA36D3C /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		E84C6F93280D71659D200558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A1B2C3D4E5F6789012345678 /* GastownController.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GastownController.entitlements; sourceTree = "<group>"; };
 		EA7501794496ABBBF6232449 /* GastownServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastownServiceTests.swift; sourceTree = "<group>"; };
 		EBE382B1B1554CF8942D2244 /* NativeCommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCommandRunner.swift; sourceTree = "<group>"; };
 		F0D76C0C434A0F6209660C7B /* MockCommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommandRunner.swift; sourceTree = "<group>"; };
@@ -64,15 +75,21 @@
 			children = (
 				A9FB8AF064738E3B2698F879 /* AddRigView.swift */,
 				3C914D78FDE93B668573EFFA /* Assets.xcassets */,
+				4158B8C5D12A711AC4BC4E4D /* CommandCenterView.swift */,
 				9DD9E7ABB8ED7D5FA9C687CE /* CommandRunner.swift */,
 				6D102D49D9BEE7BE3EB87561 /* ContentView.swift */,
 				F55929BD912A871E7F6A4DCE /* DashboardView.swift */,
 				2CC35A1C845DA2B46CFAF032 /* GastownControllerApp.swift */,
 				19F0B5A7896E100F324A3272 /* GastownModels.swift */,
 				20C1DBCDB7D1D8394739FEF7 /* GastownService.swift */,
+				A1B2C3D4E5F6789012345678 /* GastownController.entitlements */,
 				E84C6F93280D71659D200558 /* Info.plist */,
+				360BE4D4120F7E1E692E83DF /* MayorChatView.swift */,
 				EBE382B1B1554CF8942D2244 /* NativeCommandRunner.swift */,
 				B7BBD5C8099E8EC4F6317C4E /* QuickChatSheet.swift */,
+				674B01E87B5B0D4B29137E72 /* RigDetailView.swift */,
+				7BC4F2F66E105EB3B3859D9D /* SetupCheckService.swift */,
+				C8E4607D775D1D370AA36D3C /* SetupView.swift */,
 			);
 			path = GastownController;
 			sourceTree = "<group>";
@@ -141,7 +158,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					7EDAE8B1BC8D97A99F7B6412 = {
 						DevelopmentTeam = "";
@@ -199,14 +216,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6370C132372A6EADDC9A216 /* AddRigView.swift in Sources */,
+				D661BC73E778EE606B450F79 /* CommandCenterView.swift in Sources */,
 				3EED59230AD70080B0AE7F62 /* CommandRunner.swift in Sources */,
 				6239FB84A67A21D8694C810F /* ContentView.swift in Sources */,
 				C37DB41938044A3AE31CED36 /* DashboardView.swift in Sources */,
 				BBA9D6CD4976F68956F6FE54 /* GastownControllerApp.swift in Sources */,
 				90E5A44FFB31BF57F261804D /* GastownModels.swift in Sources */,
 				058ACD5E6D42E2BBF9DE6238 /* GastownService.swift in Sources */,
+				BF890729CB43E6CDA1DB5BF2 /* MayorChatView.swift in Sources */,
 				340FF4FAB24B630F4456A60A /* NativeCommandRunner.swift in Sources */,
 				3032BDEE930A322786C5D486 /* QuickChatSheet.swift in Sources */,
+				353E9774D3A3558D37FE8832 /* RigDetailView.swift in Sources */,
+				EF7EC5D20FD383070894C657 /* SetupCheckService.swift in Sources */,
+				4FC94FAB98F2F924CF9F845C /* SetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,10 +247,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GastownController/GastownController.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = GastownController/Info.plist;
@@ -275,11 +297,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -293,7 +313,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -334,11 +353,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -359,7 +376,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -373,7 +389,6 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -395,7 +410,6 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -414,10 +428,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GastownController/GastownController.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = GastownController/Info.plist;

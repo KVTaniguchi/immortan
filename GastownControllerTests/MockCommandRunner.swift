@@ -15,7 +15,7 @@ class MockCommandRunner: CommandRunner {
     var stubbedStatusCode: Int = 0
     var shouldThrowError: Bool = false
     
-    func runCommand(executable: URL, arguments: [String], currentDirectory: URL?) async throws -> (status: Int, output: Data, errorOutput: Data) {
+    func runCommand(executable: URL, arguments: [String], currentDirectory: URL?, stdinData: Data?) async throws -> (status: Int, output: Data, errorOutput: Data) {
         if shouldThrowError {
             throw NSError(domain: "MockRunnerError", code: 99, userInfo: nil)
         }

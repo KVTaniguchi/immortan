@@ -2,12 +2,18 @@ import SwiftUI
 
 struct SetupView: View {
     @StateObject private var setup = SetupCheckService()
+    @StateObject private var town = GastownService()
+    @State private var isStartingTown = false
     let onComplete: () -> Void
     
     let bgColor  = Color(red: 0.1,  green: 0.1,  blue: 0.12)
     let neonGreen  = Color(red: 0.2,  green: 0.9,  blue: 0.4)
     let neonOrange = Color(red: 1.0,  green: 0.6,  blue: 0.0)
     let steelGray  = Color(red: 0.25, green: 0.25, blue: 0.28)
+    
+    private var gtInstalled: Bool {
+        setup.checks.first(where: { $0.id == "gt_installed" })?.status.isOk ?? false
+    }
     
     var body: some View {
         ZStack {
@@ -62,22 +68,43 @@ struct SetupView: View {
                     
                     Spacer()
                     
-                    if setup.allPassed {
+                    if gtInstalled {
                         Button(action: {
-                            UserDefaults.standard.set(true, forKey: "setupComplete")
-                            onComplete()
+                            isStartingTown = true
+                            Task {
+                                await town.ensureOllamaServerRunning()
+                                try? await town.startTown()
+                                isStartingTown = false
+                            }
                         }) {
-                            Label("LAUNCH GASTOWN", systemImage: "bolt.fill")
+                            Label(isStartingTown ? "STARTING..." : "START TOWN",
+                                  systemImage: "play.fill")
                                 .font(.system(.body, design: .monospaced).bold())
-                                .padding(.horizontal, 24)
+                                .padding(.horizontal, 16)
                                 .padding(.vertical, 10)
-                                .background(neonGreen)
-                                .foregroundColor(.black)
+                                .background(steelGray)
+                                .foregroundColor(neonOrange)
                                 .cornerRadius(4)
                         }
                         .buttonStyle(.plain)
-                        .transition(.opacity.combined(with: .move(edge: .trailing)))
+                        .disabled(isStartingTown)
                     }
+                    
+                    Button(action: {
+                        UserDefaults.standard.set(true, forKey: "setupComplete")
+                        onComplete()
+                    }) {
+                        Label(setup.allPassed ? "LAUNCH GASTOWN" : "OPEN DASHBOARD",
+                              systemImage: setup.allPassed ? "bolt.fill" : "rectangle.grid.2x2")
+                            .font(.system(.body, design: .monospaced).bold())
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 10)
+                            .background(neonGreen)
+                            .foregroundColor(.black)
+                            .cornerRadius(4)
+                    }
+                    .buttonStyle(.plain)
+                    .transition(.opacity.combined(with: .move(edge: .trailing)))
                 }
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)

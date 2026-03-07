@@ -102,8 +102,16 @@ final class GastownServiceTests: XCTestCase {
         // 1. Trigger Mayor Boot
         try await service.startMayor(inRig: "todosampler")
         
-        // 2. Verify gt mayor start was triggered
-        XCTAssertTrue(mockRunner.executedCommands.contains(where: { $0 == ["gt", "mayor", "start"] }))
+        // 2. Verify GT_ROOT-pinned mayor start was triggered via env
+        XCTAssertTrue(
+            mockRunner.executedCommands.contains(where: {
+                $0.count >= 5 &&
+                $0[0] == "env" &&
+                $0[2].hasSuffix("/gt") &&
+                $0[3] == "mayor" &&
+                $0[4] == "start"
+            })
+        )
     }
     
     func testSendNativeMailFormatsCorrectly() async throws {
@@ -112,8 +120,8 @@ final class GastownServiceTests: XCTestCase {
         // Act
         try await service.sendNativeMail(to: "mayor/", message: "Test Nudge")
         
-        // Assert format: gt mail send mayor/ -s Immortan Direct Message -m Test Nudge
-        let expectedCommand = ["gt", "mail", "send", "mayor/", "-s", "Immortan Direct Message", "-m", "Test Nudge"]
+        // Assert format: gt nudge mayor --mode=immediate --stdin
+        let expectedCommand = ["gt", "nudge", "mayor", "--mode=immediate", "--stdin"]
         XCTAssertTrue(mockRunner.executedCommands.contains(expectedCommand))
     }
 }

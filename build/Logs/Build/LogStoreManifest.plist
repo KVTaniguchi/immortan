@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>12</integer>
+	<key>logs</key>
+	<dict>
+		<key>EB646AD1-5860-468B-84D2-57140BF192DA</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>EB646AD1-5860-468B-84D2-57140BF192DA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>GastownController project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>GastownController</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project GastownController with scheme GastownController</string>
+			<key>timeStartedRecording</key>
+			<real>794504698.94156504</real>
+			<key>timeStoppedRecording</key>
+			<real>794504701.28291297</real>
+			<key>title</key>
+			<string>Building project GastownController with scheme GastownController</string>
+			<key>uniqueIdentifier</key>
+			<string>EB646AD1-5860-468B-84D2-57140BF192DA</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

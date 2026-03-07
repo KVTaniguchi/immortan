@@ -4,6 +4,8 @@ struct CommandCenterView: View {
     @ObservedObject var service: GastownService
     @Binding var selection: ContentView.SidebarItem?
     
+    @State private var isPoweringOn = false
+    
     // Industrial theme colors
     let warRigBackground = Color(red: 0.1, green: 0.1, blue: 0.12)
     let neonGreen = Color(red: 0.2, green: 0.9, blue: 0.4)
@@ -40,6 +42,32 @@ struct CommandCenterView: View {
                                     .foregroundColor(neonOrange)
                                 
                                 HStack(spacing: 8) {
+                                    if !town.daemon.running {
+                                        Button(action: {
+                                            isPoweringOn = true
+                                            Task {
+                                                try? await service.startTown()
+                                                isPoweringOn = false
+                                            }
+                                        }) {
+                                            if isPoweringOn {
+                                                ProgressView()
+                                                    .controlSize(.mini)
+                                                    .padding(.horizontal, 8)
+                                            } else {
+                                                Text("POWER ON")
+                                                    .font(.caption2.bold())
+                                                    .padding(.horizontal, 8)
+                                                    .padding(.vertical, 4)
+                                                    .background(neonOrange)
+                                                    .foregroundColor(.black)
+                                                    .cornerRadius(4)
+                                            }
+                                        }
+                                        .buttonStyle(.plain)
+                                        .disabled(isPoweringOn)
+                                    }
+                                    
                                     Circle()
                                         .fill(town.daemon.running ? neonGreen : .red)
                                         .frame(width: 8, height: 8)

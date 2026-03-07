@@ -31,7 +31,10 @@ struct MayorChatView: View {
     @State private var rawTmuxLines: [String] = []
     @State private var currentDirective: String? = nil
     @State private var mayorModelLabel: String = "model: unknown"
-    
+
+    /// Prevents freeze when pasting huge text into the message field.
+    private let maxInputCharacters = 10_000
+
     // Session state
     @State private var isSessionAlive = true
     @State private var isWakingUp = false
@@ -149,6 +152,7 @@ struct MayorChatView: View {
                         withAnimation { proxy.scrollTo("bottom", anchor: .bottom) }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 // Asleep Overlay
                 if !isSessionAlive {
@@ -192,69 +196,73 @@ struct MayorChatView: View {
                     .overlay(RoundedRectangle(cornerRadius: 12).stroke(neonOrange.opacity(0.5), lineWidth: 1))
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .layoutPriority(1)
             
-            Divider().background(steelGray)
-            
-            // Error
-            if let err = sendError {
-                Text("⚠ \(err)")
-                    .font(.system(size: 10, design: .monospaced))
-                    .foregroundColor(.red)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 6)
-            }
-            
-            // Input area — Pinned to bottom
-            HStack(alignment: .bottom, spacing: 10) {
-                TextField("Message the Mayor...", text: $inputText, axis: .vertical)
-                    .font(.system(.body, design: .monospaced))
-                    .lineLimit(4...10)
-                    .padding(12)
-                    .background(Color(white: 0.16))
-                    .cornerRadius(6)
-                    .foregroundColor(.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(neonOrange.opacity(0.35), lineWidth: 1)
-                    )
-                    .disabled(!isSessionAlive)
-                    .onKeyPress(.return) {
-                        if !NSEvent.modifierFlags.contains(.shift) {
-                            sendMessage()
-                            return .handled
-                        }
-                        return .ignored
-                    }
-                
-                Button(action: sendMessage) {
-                    if isSending {
-                        ProgressView().controlSize(.small).frame(width: 36, height: 36)
-                    } else {
-                        Image(systemName: "arrow.up.circle.fill")
-                            .font(.system(size: 32))
-                            .foregroundColor((inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !isSessionAlive) ? steelGray : neonGreen)
-                    }
-                }
-                .buttonStyle(.plain)
-                .disabled(inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isSending || !isSessionAlive)
-                .padding(.bottom, 4)
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 14)
-            .background(
-                bgColor
-                    .overlay(alignment: .top) {
-                        Rectangle()
-                            .fill(steelGray.opacity(0.9))
-                            .frame(height: 1)
-                    }
-                    .shadow(color: .black.opacity(0.35), radius: 6, x: 0, y: -2)
-            )
-
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(bgColor)
-        .safeAreaInset(edge: .bottom) {
-            Color.clear.frame(height: 6)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            VStack(spacing: 0) {
+                Divider().background(steelGray)
+
+                if let err = sendError {
+                    Text("⚠ \(err)")
+                        .font(.system(size: 10, design: .monospaced))
+                        .foregroundColor(.red)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 6)
+                }
+
+                HStack(alignment: .bottom, spacing: 10) {
+                    TextField("Message the Mayor...", text: Binding(
+                        get: { inputText },
+                        set: { inputText = String($0.prefix(maxInputCharacters)) }
+                    ), axis: .vertical)
+                        .font(.system(.body, design: .monospaced))
+                        .lineLimit(3, reservesSpace: true)
+                        .frame(height: 74, alignment: .topLeading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(12)
+                        .background(Color(white: 0.16))
+                        .cornerRadius(6)
+                        .foregroundColor(.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(neonOrange.opacity(0.35), lineWidth: 1)
+                        )
+                        .disabled(!isSessionAlive)
+                        .onKeyPress(.return) {
+                            if !NSEvent.modifierFlags.contains(.shift) {
+                                sendMessage()
+                                return .handled
+                            }
+                            return .ignored
+                        }
+
+                    Button(action: sendMessage) {
+                        if isSending {
+                            ProgressView().controlSize(.small).frame(width: 36, height: 36)
+                        } else {
+                            Image(systemName: "arrow.up.circle.fill")
+                                .font(.system(size: 32))
+                                .foregroundColor((inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !isSessionAlive) ? steelGray : neonGreen)
+                        }
+                    }
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
+                    .buttonStyle(.plain)
+                    .disabled(inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isSending || !isSessionAlive)
+                    .padding(.bottom, 4)
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 12)
+                .padding(.bottom, 10)
+            }
+            .background(
+                bgColor.shadow(color: .black.opacity(0.35), radius: 6, x: 0, y: -2)
+            )
+            .padding(.bottom, 8)
         }
         .task {
             if let model = service.configuredModel(forAgentAlias: "mayor") {
@@ -293,7 +301,7 @@ struct MayorChatView: View {
         isWakingUp = true
         Task {
             do {
-                try await service.startMayor(inRig: rigName)
+                try await service.launchRig(name: rigName)
                 try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
                 await fetchTmuxOutput()
                 isWakingUp = false

@@ -1,0 +1,52 @@
+🏙️ Gastown Operational Design Doc: "Codex Takeover"
+1. System Overview (For Codex Context)
+Gastown is an Eventual Consistency multi-agent factory. It uses tmux as its UI and Beads (Git-backed JSONL) as its persistent memory.
+
+The Mayor: The chief orchestrator and primary interactive agent.
+
+The Deacon: The "system admin" agent that monitors health and cleans up orphaned processes.
+
+The Witness: A per-rig monitor that kills stalled workers.
+
+2. Failure Analysis: The "Tmux Loop"
+The current failure (infinite tmux loop) is a known symptom of the system's "IsAlive" check failing to recognize local runners.
+
+Root Cause A: The Deacon uses pgrep or ps to look for node or claude. If you're running Codex or Ollama, the Deacon doesn't see those process names, thinks the session is dead, and issues a restart.
+
+Root Cause B: ZFC (Zero-Filesystem-Inference) Violation. If GT_ROOT or the path to gt is missing from the tmux environment, the agent crashes on boot.
+
+3. Required Implementation Steps for Codex
+Codex: Execute these commands in sequence to stabilize the Mayor's office.
+
+A. Update Process Recognition (Health Check Fix)
+Update the Deacon's environment to include your local binaries so it stops "murdering" the Mayor.
+
+Bash
+# Force the system to recognize local agent binaries
+gt deacon env GT_PROCESS_NAMES=codex,ollama,node,python3
+Note: Recent patches replaced PID probing with heartbeat-based liveness, but explicit naming is still safer for local setups.
+
+B. Stabilization & Environment Injection
+Ensure the tmux session has the correct paths. Gastown recently moved to a default socket instead of per-town sockets to reduce confusion.
+
+Bash
+# Manually set the environment in the mayor's tmux session
+tmux set-environment -t gt-mayor GT_ROOT "$(pwd)"
+tmux set-environment -t gt-mayor PATH "$PATH:/opt/homebrew/bin"
+C. The "Nuclear" Reset
+If the Mayor is still stuck in a loop, the Beads state might be corrupted or holding a "stale" lock.
+
+Kill the current daemon: killall bd.
+
+Clear the gt runtime PIDs: rm -rf .runtime/pids/*.
+
+Run gt prime to re-initialize the town's identity and formulas.
+
+4. Codex-Specific Prompt Guidelines
+To avoid hitting the "dumb zone" of your context window:
+
+Use Compaction: Use the /compact endpoint frequently to keep your context window lean.
+
+Direct File Access: Do not ask the user to paste files. You have a shell; use cat or read on absolute paths within the ~/gt/ root.
+
+Batch Tool Use: Use multi_tool_use.parallel for all directory scans and file reads to maximize throughput.

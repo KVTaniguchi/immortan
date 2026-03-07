@@ -46,6 +46,7 @@ struct ContentView: View {
         }
         .onAppear {
             service.startPolling()
+            Task { await service.ensureOllamaServerRunning() }
         }
         .onDisappear {
             service.stopPolling()

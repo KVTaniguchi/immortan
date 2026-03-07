@@ -1,40 +1,60 @@
 {
-  "type": "town-settings",
-  "version": 1,
-  "default_agent": "mayor",
-  "agents": {
-    "llama-fast": {
-      "command": "ollama",
-      "args": [
+  "agents" : {
+    "llama-fast" : {
+      "args" : [
         "run",
-        "llama3.1:70b-instruct-q4_K_M"
-      ]
+        "--provider",
+        "ollama",
+        "--model",
+        "llama3.1:70b-instruct-q4_K_M",
+        "--interactive",
+        "--text"
+      ],
+      "command" : "goose"
     },
-    "llama4": {
-      "command": "ollama",
-      "args": [
+    "llama4" : {
+      "args" : [
         "run",
-        "llama4"
-      ]
+        "--provider",
+        "ollama",
+        "--model",
+        "llama4",
+        "--interactive",
+        "--text"
+      ],
+      "command" : "goose"
     },
-    "mayor": {
-      "command": "ollama",
-      "args": [
+    "mayor" : {
+      "args" : [
         "run",
-        "qwen2.5-coder:32b"
-      ]
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen2.5-coder:7b",
+        "--interactive",
+        "--text"
+      ],
+      "command" : "goose"
     },
-    "polecat": {
-      "command": "ollama",
-      "args": [
+    "polecat" : {
+      "args" : [
         "run",
-        "glm4:9b"
-      ]
+        "--provider",
+        "ollama",
+        "--model",
+        "glm4:9b",
+        "--interactive",
+        "--text"
+      ],
+      "command" : "goose"
     }
   },
-  "scheduler": {
-    "max_polecats": 1,
-    "batch_size": 1,
-    "spawn_delay": "0s"
-  }
+  "default_agent" : "mayor",
+  "scheduler" : {
+    "batch_size" : 1,
+    "max_polecats" : 1,
+    "spawn_delay" : "0s"
+  },
+  "type" : "town-settings",
+  "version" : 1
 }

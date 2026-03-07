@@ -8,7 +8,10 @@ struct QuickChatSheet: View {
     @State private var messagePrompt = ""
     @State private var isSending = false
     @State private var errorMessage: String?
-    
+
+    /// Prevents TextEditor from freezing when pasting very large prompts (SwiftUI binding + layout cost).
+    private let maxPromptCharacters = 32_000
+
     // Industrial Theme colors matching dashboard
     let neonOrange = Color(red: 1.0, green: 0.6, blue: 0.0)
     let steelGray = Color(red: 0.25, green: 0.25, blue: 0.28)
@@ -61,7 +64,10 @@ struct QuickChatSheet: View {
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                     
-                    TextEditor(text: $messagePrompt)
+                    TextEditor(text: Binding(
+                        get: { messagePrompt },
+                        set: { messagePrompt = String($0.prefix(maxPromptCharacters)) }
+                    ))
                         .font(.system(.body, design: .monospaced))
                         .padding(8)
                         .background(Color(white: 0.15))
@@ -71,7 +77,7 @@ struct QuickChatSheet: View {
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(steelGray, lineWidth: 1)
                         )
-                        .frame(minHeight: 120)
+                        .frame(minHeight: 120, maxHeight: 220)
                         .padding(.horizontal)
                     
                     HStack {

@@ -292,13 +292,19 @@ struct RigStation: View {
                         .font(.system(size: 10, design: .monospaced))
                         .foregroundColor(.purple)
                 }
+
+                if let mayorModel = service.configuredModel(forAgentAlias: "mayor") {
+                    Label(mayorModel.hasPrefix("qwen") ? "QWEN" : "NON-QWEN", systemImage: "cpu.fill")
+                        .font(.system(size: 10, design: .monospaced))
+                        .foregroundColor(mayorModel.hasPrefix("qwen") ? .green : .orange)
+                }
                 
                 Spacer()
                 
                 Button(action: {
                     Task {
                         isWaking = true
-                        try? await service.startMayor(inRig: rig.name)
+                        try? await service.launchRig(name: rig.name)
                         try? await Task.sleep(nanoseconds: 2_000_000_000)
                         isWaking = false
                     }
@@ -307,7 +313,7 @@ struct RigStation: View {
                         ProgressView()
                             .scaleEffect(0.6)
                     } else {
-                        Text("WAKE UP")
+                        Text("LAUNCH")
                             .font(.system(size: 10, weight: .bold, design: .monospaced))
                     }
                 }

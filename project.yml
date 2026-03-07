@@ -11,8 +11,8 @@ targets:
       path: GastownController/Info.plist
       properties:
         CFBundleShortVersionString: 1.0.0
-        CFBundleVersion: 1
-        LSMinimumSystemVersion: 14.0.0
+        CFBundleVersion: "1"
+        LSMinimumSystemVersion: "14.0.0"
         NSHumanReadableCopyright: "Copyright © 2026 Kevin Taniguchi. All rights reserved."
         NSPrincipalClass: NSApplication
     settings:

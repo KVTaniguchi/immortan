@@ -125,6 +125,7 @@ struct RigDetailView: View {
                     
                     // SCROLLABLE CONTENT: Narrative & Chat
                     MayorChatView(service: service, rigName: rig.name)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             } else {
                 VStack(spacing: 20) {
