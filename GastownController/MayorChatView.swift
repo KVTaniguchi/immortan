@@ -30,6 +30,7 @@ struct MayorChatView: View {
     @State private var sendError: String? = nil
     @State private var rawTmuxLines: [String] = []
     @State private var currentDirective: String? = nil
+    @State private var mayorModelLabel: String = "model: unknown"
     
     // Session state
     @State private var isSessionAlive = true
@@ -52,7 +53,7 @@ struct MayorChatView: View {
                     Text("MAYOR SESSION")
                         .font(.system(size: 14, weight: .heavy, design: .monospaced))
                         .foregroundColor(.white)
-                    Text("\(mayorSession) · qwen2.5-coder:32b")
+                    Text("\(mayorSession) · \(mayorModelLabel)")
                         .font(.system(size: 10, design: .monospaced))
                         .foregroundColor(.gray)
                 }
@@ -256,6 +257,9 @@ struct MayorChatView: View {
             Color.clear.frame(height: 6)
         }
         .task {
+            if let model = service.configuredModel(forAgentAlias: "mayor") {
+                mayorModelLabel = model
+            }
             await loadMailHistory()
             await startPolling()
         }

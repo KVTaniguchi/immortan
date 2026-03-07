@@ -264,4 +264,27 @@ class GastownService: ObservableObject {
         let possiblePaths = ["/opt/homebrew/bin/tmux", "/usr/local/bin/tmux", "/usr/bin/tmux"]
         return possiblePaths.first { FileManager.default.fileExists(atPath: $0) }
     }
+
+    // MARK: - Config Helpers
+
+    func configuredModel(forAgentAlias alias: String) -> String? {
+        let configURL = URL(fileURLWithPath: hqLocation)
+            .appendingPathComponent("settings")
+            .appendingPathComponent("config.json")
+
+        guard
+            let data = try? Data(contentsOf: configURL),
+            let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+            let agents = root["agents"] as? [String: Any],
+            let agent = agents[alias] as? [String: Any],
+            let args = agent["args"] as? [String]
+        else {
+            return nil
+        }
+
+        guard let modelIdx = args.firstIndex(of: "--model"), args.indices.contains(modelIdx + 1) else {
+            return nil
+        }
+        return args[modelIdx + 1]
+    }
 }
