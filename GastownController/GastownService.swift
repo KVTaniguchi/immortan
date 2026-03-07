@@ -12,7 +12,8 @@ class GastownService: ObservableObject {
     private let pollInterval: TimeInterval = 2.0
     
     private let hqLocation: String
-    private let runner: CommandRunner
+    let runner: CommandRunner
+
     
     init(hqLocation: String = "/Users/ktaniguchi/Development/immortan", runner: CommandRunner = NativeCommandRunner()) {
         self.hqLocation = hqLocation
@@ -90,9 +91,12 @@ class GastownService: ObservableObject {
     }
     
     /// Creates a new directory, runs `git init`, and then adopts it as a Gastown rig.
-    func createEmptyProject(name: String) async throws {
+    /// - Parameter parentDirectory: Where to create the new project directory. Defaults to hqLocation.
+    func createEmptyProject(name: String, parentDirectory: URL? = nil) async throws {
+        let rootDirectory = parentDirectory ?? URL(fileURLWithPath: hqLocation)
+
         // 1. Mkdir
-        let projectURL = URL(fileURLWithPath: hqLocation).appendingPathComponent(name)
+        let projectURL = rootDirectory.appendingPathComponent(name, isDirectory: true)
         try runner.createDirectory(at: projectURL, withIntermediateDirectories: true, attributes: nil)
         
         // 2. Git init
@@ -105,41 +109,60 @@ class GastownService: ObservableObject {
         if gitResult.status != 0 {
             throw NSError(domain: "GastownService", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to initialize git repository"])
         }
-        
-        // 3. Adopt rig
+
+        // 3. Adopt rig from the project directory while pinning the town root.
+        // This allows projects to live outside the Immortan repo.
+        try await adoptExistingProject(name: name, projectDirectory: projectURL)
+    }
+
+    /// Registers an existing local project directory as a rig in this town.
+    func adoptExistingProject(name: String, projectDirectory: URL) async throws {
+        let isDirectory = (try? projectDirectory.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) ?? false
+        guard isDirectory else {
+            throw NSError(
+                domain: "GastownService",
+                code: 2,
+                userInfo: [NSLocalizedDescriptionKey: "Selected path is not a directory: \(projectDirectory.path)"]
+            )
+        }
+
         let adoptResult = try await runner.runCommand(
-            executable: URL(fileURLWithPath: gtPath),
-            arguments: ["rig", "add", name, "--adopt", "--force"],
-            currentDirectory: URL(fileURLWithPath: hqLocation)
+            executable: URL(fileURLWithPath: "/usr/bin/env"),
+            arguments: ["GT_ROOT=\(hqLocation)", gtPath, "rig", "add", name, "--adopt", "--force"],
+            currentDirectory: projectDirectory
         )
-        
+
         if adoptResult.status != 0 {
             let errorString = String(data: adoptResult.errorOutput, encoding: .utf8) ?? "Unknown Error in rig adoption"
             throw NSError(domain: "GastownService", code: adoptResult.status, userInfo: [NSLocalizedDescriptionKey: errorString])
         }
-        
+
         Task { @MainActor in
             await self.fetchStatus()
         }
     }
     
-    /// Sends a native message to a Gastown address (like `mayor/`) without opening the terminal.
+    /// Sends a message directly into the Mayor's running Goose session via gt nudge (tmux send-keys).
+    /// NOTE: gt mail send only queues messages; Goose doesn't poll mail, so we must use gt nudge.
     func sendNativeMail(to address: String, message: String) async throws {
+        let target = normalizeNudgeTarget(address)
+
+        // Use --stdin to avoid shell quoting issues with special characters.
         let result = try await runner.runCommand(
             executable: URL(fileURLWithPath: gtPath),
-            arguments: ["mail", "send", address, "-s", "Immortan Direct Message", "-m", message],
-            currentDirectory: URL(fileURLWithPath: hqLocation)
+            arguments: ["nudge", target, "--mode=immediate", "--stdin"],
+            currentDirectory: URL(fileURLWithPath: hqLocation),
+            stdinData: (message + "\n").data(using: .utf8)
         )
         
         if result.status != 0 {
-            let errorString = String(data: result.errorOutput, encoding: .utf8) ?? "Failed to dispatch mail"
+            let errorString = String(data: result.errorOutput, encoding: .utf8) ?? "Failed to nudge mayor"
             throw NSError(domain: "GastownService", code: result.status, userInfo: [NSLocalizedDescriptionKey: errorString])
         }
-        
-        // Trigger status update to show unread mail
-        Task { @MainActor in
-            await self.fetchStatus()
-        }
+
+        // In immediate mode, nudge injects text into tmux but can leave it unsubmitted.
+        // Force Enter so the active prompt actually runs.
+        try await submitPromptIfSessionFound(for: target)
     }
     
     /// Uses AppleScript to spawn a native macOS Terminal attached to the Mayor.
@@ -179,16 +202,66 @@ class GastownService: ObservableObject {
     }
     
     func startMayor(inRig rigName: String) async throws {
-        let rigURL = URL(fileURLWithPath: hqLocation).appendingPathComponent(rigName)
-        
         _ = try await runner.runCommand(
             executable: URL(fileURLWithPath: gtPath),
             arguments: ["mayor", "start"],
-            currentDirectory: rigURL
+            currentDirectory: URL(fileURLWithPath: hqLocation)
         )
         
         Task { @MainActor in
             await self.fetchStatus()
         }
+    }
+
+    // MARK: - Message Helpers
+
+    private func normalizeNudgeTarget(_ address: String) -> String {
+        address.trimmingCharacters(in: .whitespacesAndNewlines)
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    }
+
+    private func submitPromptIfSessionFound(for target: String) async throws {
+        guard let tmuxPath = resolveTmuxPath() else { return }
+        let candidates = candidateSessions(for: target)
+
+        for session in candidates {
+            let hasSession = try await runner.runCommand(
+                executable: URL(fileURLWithPath: tmuxPath),
+                arguments: ["has-session", "-t", session],
+                currentDirectory: URL(fileURLWithPath: hqLocation)
+            )
+
+            guard hasSession.status == 0 else { continue }
+
+            _ = try await runner.runCommand(
+                executable: URL(fileURLWithPath: tmuxPath),
+                arguments: ["send-keys", "-t", session, "Enter"],
+                currentDirectory: URL(fileURLWithPath: hqLocation)
+            )
+            return
+        }
+    }
+
+    private func candidateSessions(for target: String) -> [String] {
+        if let status = townStatus {
+            if let match = status.agents.first(where: {
+                $0.name == target || $0.address.trimmingCharacters(in: CharacterSet(charactersIn: "/")) == target
+            }), let session = match.session, !session.isEmpty {
+                return [session]
+            }
+        }
+
+        if target == "mayor" {
+            return ["hq-mayor", "gt-mayor"]
+        }
+        if target == "deacon" {
+            return ["hq-deacon", "gt-deacon"]
+        }
+        return [target]
+    }
+
+    private func resolveTmuxPath() -> String? {
+        let possiblePaths = ["/opt/homebrew/bin/tmux", "/usr/local/bin/tmux", "/usr/bin/tmux"]
+        return possiblePaths.first { FileManager.default.fileExists(atPath: $0) }
     }
 }

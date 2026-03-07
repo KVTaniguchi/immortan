@@ -1,12 +1,22 @@
 import SwiftUI
+import AppKit
 
 struct AddRigView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var service: GastownService
     
+    enum SourceType: String, CaseIterable, Identifiable {
+        case newProject = "New Project"
+        case importExisting = "Import Folder"
+        case gitClone = "Clone Git Repo"
+        var id: String { self.rawValue }
+    }
+    
     @State private var rigName = ""
     @State private var gitUrl = ""
-    @State private var isLocalOnly = true
+    @State private var sourceType: SourceType = .newProject
+    @State private var projectRootURL: URL = FileManager.default.homeDirectoryForCurrentUser
+    @State private var existingProjectURL: URL = FileManager.default.homeDirectoryForCurrentUser
     @State private var isSubmitting = false
     @State private var errorMessage: String?
     
@@ -14,12 +24,54 @@ struct AddRigView: View {
         NavigationStack {
             Form {
                 Section(header: Text("Project Genesis")) {
+                    Picker("Source", selection: $sourceType) {
+                        ForEach(SourceType.allCases) { type in
+                            Text(type.rawValue).tag(type)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.bottom, 8)
+                    
                     TextField("Project/Rig Name", text: $rigName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                    if sourceType == .newProject {
+                        HStack(spacing: 10) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Project Location")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text(projectRootURL.path)
+                                    .font(.caption.monospaced())
+                                    .lineLimit(1)
+                                    .truncationMode(.middle)
+                            }
+                            Spacer()
+                            Button("Choose...") {
+                                chooseProjectLocation()
+                            }
+                        }
+                    }
+
+                    if sourceType == .importExisting {
+                        HStack(spacing: 10) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Existing Project Folder")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text(existingProjectURL.path)
+                                    .font(.caption.monospaced())
+                                    .lineLimit(1)
+                                    .truncationMode(.middle)
+                            }
+                            Spacer()
+                            Button("Choose...") {
+                                chooseExistingProjectFolder()
+                            }
+                        }
+                    }
                     
-                    Toggle("Create new empty project locally", isOn: $isLocalOnly)
-                    
-                    if !isLocalOnly {
+                    if sourceType == .gitClone {
                         TextField("Git Repository URL", text: $gitUrl)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .disableAutocorrection(true)
@@ -44,7 +96,7 @@ struct AddRigView: View {
                                 .frame(maxWidth: .infinity)
                         }
                     }
-                    .disabled(rigName.isEmpty || (!isLocalOnly && gitUrl.isEmpty) || isSubmitting)
+                    .disabled(rigName.isEmpty || (sourceType == .gitClone && gitUrl.isEmpty) || isSubmitting)
                     .buttonStyle(.borderedProminent)
                 }
             }
@@ -69,7 +121,7 @@ struct AddRigView: View {
             
         guard !safeName.isEmpty else { return }
         
-        if !isLocalOnly && gitUrl.isEmpty {
+        if sourceType == .gitClone && gitUrl.isEmpty {
             self.errorMessage = "Git URL required for remote cloning."
             return
         }
@@ -79,8 +131,10 @@ struct AddRigView: View {
         
         Task {
             do {
-                if isLocalOnly {
-                    try await service.createEmptyProject(name: safeName)
+                if sourceType == .newProject {
+                    try await service.createEmptyProject(name: safeName, parentDirectory: projectRootURL)
+                } else if sourceType == .importExisting {
+                    try await service.adoptExistingProject(name: safeName, projectDirectory: existingProjectURL)
                 } else {
                     try await service.addRig(name: safeName, url: gitUrl)
                 }
@@ -91,5 +145,35 @@ struct AddRigView: View {
             }
         }
     }
-}
 
+    private func chooseProjectLocation() {
+        let panel = NSOpenPanel()
+        panel.title = "Select New Project Location"
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.canCreateDirectories = true
+        panel.directoryURL = projectRootURL
+
+        if panel.runModal() == .OK, let url = panel.url {
+            projectRootURL = url
+        }
+    }
+
+    private func chooseExistingProjectFolder() {
+        let panel = NSOpenPanel()
+        panel.title = "Select Existing Project Folder"
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.canCreateDirectories = false
+        panel.directoryURL = existingProjectURL
+
+        if panel.runModal() == .OK, let url = panel.url {
+            existingProjectURL = url
+            if rigName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                rigName = url.lastPathComponent
+            }
+        }
+    }
+}
