@@ -12,7 +12,7 @@ Immortan is a **Gastown project** focused on operating **AI agent teams**. It pr
 - Lets you create rigs from new projects or Git repos
 - Lets you import an existing project folder as a rig
 - Provides in-app Mayor chat and quick directives
-- Runs startup checks for Ollama, Goose, `gt`, and required models
+- Runs startup checks for Goose and `gt`
 
 ## Project Layout
 
@@ -39,10 +39,7 @@ This role model keeps human operators focused on outcomes while agent teams hand
 - Homebrew tools used by runtime checks:
   - `gt`
   - `goose`
-  - `ollama`
-- Ollama models used by default:
-  - `qwen2.5-coder:32b` (Mayor)
-  - `glm4:9b` (Polecat)
+- A configured remote LLM account for Goose/Gastown agents
 
 ## Run
 

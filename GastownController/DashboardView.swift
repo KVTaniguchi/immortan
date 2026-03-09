@@ -294,9 +294,9 @@ struct RigStation: View {
                 }
 
                 if let mayorModel = service.configuredModel(forAgentAlias: "mayor") {
-                    Label(mayorModel.hasPrefix("qwen") ? "QWEN" : "NON-QWEN", systemImage: "cpu.fill")
+                    Label("MODEL: \(mayorModel)", systemImage: "cpu.fill")
                         .font(.system(size: 10, design: .monospaced))
-                        .foregroundColor(mayorModel.hasPrefix("qwen") ? .green : .orange)
+                        .foregroundColor(.green)
                 }
                 
                 Spacer()

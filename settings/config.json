@@ -3,10 +3,6 @@
     "llama-fast" : {
       "args" : [
         "run",
-        "--provider",
-        "ollama",
-        "--model",
-        "llama3.1:70b-instruct-q4_K_M",
         "--interactive",
         "--text"
       ],
@@ -15,10 +11,6 @@
     "llama4" : {
       "args" : [
         "run",
-        "--provider",
-        "ollama",
-        "--model",
-        "llama4",
         "--interactive",
         "--text"
       ],
@@ -27,10 +19,6 @@
     "mayor" : {
       "args" : [
         "run",
-        "--provider",
-        "ollama",
-        "--model",
-        "qwen2.5-coder:7b",
         "--interactive",
         "--text"
       ],
@@ -39,10 +27,6 @@
     "polecat" : {
       "args" : [
         "run",
-        "--provider",
-        "ollama",
-        "--model",
-        "glm4:9b",
         "--interactive",
         "--text"
       ],

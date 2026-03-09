@@ -42,7 +42,7 @@ struct SetupView: View {
                         ForEach($setup.checks) { $check in
                             SetupCheckRow(
                                 check: check,
-                                isPulling: setup.isPullingModel == setup.modelName(forCheckID: check.id),
+                                isPulling: false,
                                 onFix: { fix(check: check) }
                             )
                         }
@@ -72,7 +72,6 @@ struct SetupView: View {
                         Button(action: {
                             isStartingTown = true
                             Task {
-                                await town.ensureOllamaServerRunning()
                                 try? await town.startTown()
                                 isStartingTown = false
                             }
@@ -122,18 +121,10 @@ struct SetupView: View {
     private func fix(check: SetupCheck) {
         Task {
             switch check.id {
-            case "ollama_running":
-                setup.launchOllama()
-                try? await Task.sleep(nanoseconds: 3_000_000_000) // 3s for app to start
-                await setup.runAllChecks()
             case "goose_installed":
                 await setup.installGoose()
             case "gt_installed":
                 NSWorkspace.shared.open(URL(string: "https://gastown.dev")!)
-            case let id where setup.isModelCheck(id):
-                if let model = setup.modelName(forCheckID: id) {
-                    await setup.pullModel(modelName: model, checkId: id)
-                }
             default:
                 break
             }
@@ -264,10 +255,8 @@ struct SetupCheckRow: View {
     
     private var fixLabel: String {
         switch check.id {
-        case "ollama_running":  return "LAUNCH OLLAMA"
         case "goose_installed": return "INSTALL GOOSE"
         case "gt_installed":    return "VIEW INSTALL GUIDE"
-        case let id where id.hasPrefix("model_"): return "DOWNLOAD MODEL"
         default:                return "FIX"
         }
     }

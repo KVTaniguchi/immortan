@@ -16,7 +16,7 @@ struct GastownControllerApp: App {
                 ContentView()
                     .onAppear {
                         // Re-run a quick health check in background on each launch
-                        // to catch regressions (e.g. Ollama not running)
+                        // to catch regressions in CLI/runtime prerequisites.
                         Task {
                             let svc = SetupCheckService()
                             await svc.runAllChecks()
@@ -29,4 +29,3 @@ struct GastownControllerApp: App {
         }
     }
 }
-

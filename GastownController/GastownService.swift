@@ -192,43 +192,7 @@ class GastownService: ObservableObject {
         }
     }
     
-    // MARK: - Power Commands
-
-    /// Ensures the Ollama inference server is running (required for Gastown agents).
-    /// If localhost:11434 is not responding, opens Ollama.app and polls until up or timeout.
-    func ensureOllamaServerRunning() async {
-        if await isOllamaResponding() { return }
-        // Start Ollama (app brings up the server)
-        openOllamaApp()
-        let deadline = ContinuousClock.now + .seconds(20)
-        while ContinuousClock.now < deadline {
-            try? await Task.sleep(for: .seconds(1))
-            if await isOllamaResponding() { return }
-        }
-    }
-
-    private func isOllamaResponding() async -> Bool {
-        await withCheckedContinuation { continuation in
-            guard let url = URL(string: "http://localhost:11434") else {
-                continuation.resume(returning: false)
-                return
-            }
-            let task = URLSession.shared.dataTask(with: url) { _, response, _ in
-                let ok = (response as? HTTPURLResponse)?.statusCode != nil
-                continuation.resume(returning: ok)
-            }
-            task.resume()
-        }
-    }
-
-    private func openOllamaApp() {
-        let appURL = URL(fileURLWithPath: "/Applications/Ollama.app")
-        guard FileManager.default.fileExists(atPath: appURL.path) else { return }
-        NSWorkspace.shared.open(appURL)
-    }
-    
     func startTown() async throws {
-        await ensureOllamaServerRunning()
         _ = try await runner.runCommand(
             executable: URL(fileURLWithPath: gtPath),
             arguments: ["up"],
@@ -260,22 +224,9 @@ class GastownService: ObservableObject {
 
     /// One-click launch flow for a rig:
     /// 1) Ensure town services are running
-    /// 2) Ensure mayor model config exists (or apply explicit override)
-    /// 3) Ensure selected model is present locally
-    /// 4) Start mayor
-    func launchRig(name rigName: String, qwenModel: String? = nil) async throws {
+    /// 2) Start mayor using provider/account configured in Gastown settings.
+    func launchRig(name rigName: String) async throws {
         try await startTown()
-
-        let currentMayorModel = configuredModel(forAgentAlias: "mayor")
-        let selectedModel = qwenModel?.trimmingCharacters(in: .whitespacesAndNewlines)
-            .nonEmpty ?? currentMayorModel ?? "qwen2.5-coder:32b"
-
-        // Preserve existing mayor model unless caller explicitly overrides.
-        if selectedModel != currentMayorModel {
-            try configureMayorForLocalModel(model: selectedModel)
-        }
-
-        try await ensureOllamaModelInstalled(model: selectedModel)
         try await startMayor(inRig: rigName)
         await fetchStatus()
     }
@@ -338,92 +289,6 @@ class GastownService: ObservableObject {
         return isDirectory ? rigPath : URL(fileURLWithPath: hqLocation)
     }
 
-    private func configureMayorForLocalModel(model: String) throws {
-        let configURL = URL(fileURLWithPath: hqLocation)
-            .appendingPathComponent("settings")
-            .appendingPathComponent("config.json")
-
-        let data = try Data(contentsOf: configURL)
-        guard var root = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-            throw NSError(
-                domain: "GastownService",
-                code: 5001,
-                userInfo: [NSLocalizedDescriptionKey: "Invalid settings/config.json format"]
-            )
-        }
-
-        guard var agents = root["agents"] as? [String: Any] else {
-            throw NSError(
-                domain: "GastownService",
-                code: 5002,
-                userInfo: [NSLocalizedDescriptionKey: "Missing 'agents' in settings/config.json"]
-            )
-        }
-
-        var mayor = (agents["mayor"] as? [String: Any]) ?? [:]
-        mayor["command"] = "goose"
-        mayor["args"] = ["run", "--provider", "ollama", "--model", model, "--interactive", "--text"]
-        agents["mayor"] = mayor
-        root["agents"] = agents
-
-        let serialized = try JSONSerialization.data(withJSONObject: root, options: [.prettyPrinted, .sortedKeys])
-        try serialized.write(to: configURL, options: .atomic)
-    }
-
-    private func ensureOllamaModelInstalled(model: String) async throws {
-        let listResult = try await runner.runCommand(
-            executable: URL(fileURLWithPath: "/opt/homebrew/bin/ollama"),
-            arguments: ["list"],
-            currentDirectory: URL(fileURLWithPath: hqLocation)
-        )
-
-        if listResult.status != 0 {
-            let stderr = String(data: listResult.errorOutput, encoding: .utf8) ?? ""
-            let stdout = String(data: listResult.output, encoding: .utf8) ?? ""
-            let rawError = [stderr, stdout]
-                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                .first { !$0.isEmpty } ?? "Failed to query ollama models"
-            throw NSError(
-                domain: "GastownService",
-                code: listResult.status,
-                userInfo: [NSLocalizedDescriptionKey: Self.humanizeOllamaFailure(rawError)]
-            )
-        }
-
-        let output = String(data: listResult.output, encoding: .utf8) ?? ""
-        if output.contains(model) { return }
-
-        let pullResult = try await runner.runCommand(
-            executable: URL(fileURLWithPath: "/opt/homebrew/bin/ollama"),
-            arguments: ["pull", model],
-            currentDirectory: URL(fileURLWithPath: hqLocation)
-        )
-
-        if pullResult.status != 0 {
-            let stderr = String(data: pullResult.errorOutput, encoding: .utf8) ?? ""
-            let stdout = String(data: pullResult.output, encoding: .utf8) ?? ""
-            let rawError = [stderr, stdout]
-                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                .first { !$0.isEmpty } ?? "Failed to pull \(model)"
-            throw NSError(
-                domain: "GastownService",
-                code: pullResult.status,
-                userInfo: [NSLocalizedDescriptionKey: Self.humanizeOllamaFailure(rawError)]
-            )
-        }
-    }
-
-    private static func humanizeOllamaFailure(_ raw: String) -> String {
-        let lower = raw.lowercased()
-        if lower.contains("nsrangeexception")
-            || lower.contains("mlx_random_key")
-            || lower.contains("libmlx")
-        {
-            return "Ollama crashed before startup (MLX/Metal initialization). Reinstall Ollama and launch Ollama.app once, then retry. Raw error: \(raw)"
-        }
-        return raw
-    }
-
     // MARK: - Config Helpers
 
     func configuredModel(forAgentAlias alias: String) -> String? {
@@ -446,8 +311,4 @@ class GastownService: ObservableObject {
         }
         return args[modelIdx + 1]
     }
-}
-
-private extension String {
-    var nonEmpty: String? { isEmpty ? nil : self }
 }
